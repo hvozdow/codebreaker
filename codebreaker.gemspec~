@@ -4,13 +4,13 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'codebreaker/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "Dmytro Hvozdow"
+  spec.name          = "codebreaker"
   spec.version       = Codebreaker::VERSION
   spec.authors       = ["hvozdow"]
   spec.email         = ["hvozdow@gmail.com"]
 
-  spec.summary       = %q{Codebreaker}
-  spec.description   = %q{Codebreaker is a logic game in which a code-breaker tries to break a secret code created by a code-maker. The code-maker, which will be played by the application we’re going to write, creates a secret code of four numbers between 1 and 6. }
+  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
+  spec.description   = %q{TODO: Write a longer description or delete this line.}
   spec.homepage      = "TODO: Put your gem's website or public repo URL here."
   spec.license       = "MIT"
 
