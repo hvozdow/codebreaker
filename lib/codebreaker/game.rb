@@ -1,8 +1,8 @@
-#require_relative 'guess'
+
 
 module Codebreaker
 CODE_LENGTH = 4
-	class Game<Guess
+	class Game
 		attr_accessor :code, :guess_code
 		attr_reader :answer
 
@@ -22,9 +22,9 @@ CODE_LENGTH = 4
 		end
 
 
-		def guess(guess_code)
-			guess = Codebreaker::Guess.new(guess_code)
-			if guess.valid?
+		def guess
+			guess_code=gets.chomp
+			if valid?
 				@guess_code = guess_code
 			else
 				raise "Your code must contain 4 numbers in range from 1 to 6!"
@@ -56,21 +56,9 @@ CODE_LENGTH = 4
 			@answer
 		end
 
-
-
 		def give_hint
 			@code[rand(0..CODE_LENGTH-1)]
 		end
+
 	end
 end
-
-
-test = Codebreaker::Game.new
-test.code = '6521'
-
-p test
-p test.guess('6125')
-p test.valid?
-p test.compare
-p test.code
-p test.give_hint
