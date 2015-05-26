@@ -59,6 +59,7 @@ CODE_LENGTH = 4
 		def give_hint
 			@code[rand(0..CODE_LENGTH-1)]
 		end
-
+		
 	end
 end
+
