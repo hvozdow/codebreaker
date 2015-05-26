@@ -3,7 +3,7 @@ require 'spec_helper'
 module Codebreaker
 		describe Game do
 			context "initially" do
-				it "should generate a code" do
+				it "should generate code" do
 					expect(subject.code).to_not be_empty
 				end
 
@@ -11,30 +11,30 @@ module Codebreaker
 					expect(subject.code.size).to eq(4)
 				end
 
-				it "should generate a code with 4 random numbers in 1..6 range each" do
+				it "4 differnt numbers in 1..6" do
 					expect(subject.code).to match(/^[1-6]{4}$/)
 				end
 			end
 
-			context "validator" do
-				it "should validate correct data and return 'true'" do
+			context "valid" do
+				it "correct data and return true" do
 					subject.code = "1234"
 					expect(subject).to be_valid
 				end
 
-				it "should validate wrong data and return 'false'" do
+				it "wrong data and return false" do
 					subject.code = "12382"
 					expect(subject).to_not be_valid
 				end
 			end
 
 			context "guess" do
-				it "should return valid user's guess code" do
+				it "valid guess code" do
 					valid_code = "1234"
 					expect(subject.guess(valid_code)).to eq(valid_code)
 				end
 
-				it "should raise error for invalid user's guess code" do
+				it "raise error for invalid guess code" do
 					invalid_code = "12568"
 					expect {subject.guess(invalid_code)}.to raise_error
 				end
@@ -58,22 +58,22 @@ module Codebreaker
 					expect(subject.compare).to eq([])
 				end
 
-			it "should mark with '-' for approximate match" do
+			it "should mark with '-'" do
 				subject.guess_code = "5155"
 				expect(subject.compare).to eq(["-"])
 			end
 
-			it "should mark with '+' for exact match" do
+			it "should mark with '+'" do
 				subject.guess_code = "5255"
 				expect(subject.compare).to eq(["+"])
 			end
 
-			it "should mark with both '+' and '-' for exact and approximate matches at one guess" do
+			it "should mark with both '+' and '-'" do
 				subject.guess_code = "1525"
 				expect(subject.compare).to eq(["+","-"])
 			end
 
-			it "should mark with 4 "+" for complete win" do
+			it "should mark with 4+" do
 				subject.guess_code = "1234"
 				expect(subject.compare).to eq(["+","+","+","+"])
 			end
