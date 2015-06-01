@@ -1,2 +1,2 @@
-require "codebreaker/version"
-require "codebreaker/game"
+require_relative "../lib/codebreaker/version"
+require_relative "codebreaker/game"
