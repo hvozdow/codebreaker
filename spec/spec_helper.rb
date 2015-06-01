@@ -1,2 +1,2 @@
-require 'bundler/setup'
-require 'codebreaker'
+#require 'bundler/setup'
+require_relative '../lib/codebreaker'
