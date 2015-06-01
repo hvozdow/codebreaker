@@ -1,5 +1,3 @@
-
-
 module Codebreaker
 CODE_LENGTH = 4
 	class Game
@@ -36,6 +34,8 @@ CODE_LENGTH = 4
 			code = []
 			guess_code = []
 			@answer = []
+			plus=[]
+			minus=[]
 			i = 0
 			CODE_LENGTH.times do
 				code << @code[i].to_i
@@ -46,21 +46,20 @@ CODE_LENGTH = 4
 			CODE_LENGTH.times do
 				if code.include? guess_code[i]
 					if code[i] == guess_code[i]
-						@answer << "+"
+						plus << "+"
 					else
-						@answer << "-"
+						minus << "-"
 					end
 				end
 				i+=1
 			end
-			@answer
+			@answer = plus+minus
 		end
 
 		def give_hint
 			@code[rand(0..CODE_LENGTH-1)]
 		end
+
 		
 	end
 end
-
-
