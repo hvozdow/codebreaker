@@ -1,4 +1,4 @@
-require 'spec_helper'
+require '../spec_helper'
 
 module Codebreaker
 		describe Game do
@@ -29,12 +29,9 @@ module Codebreaker
 			end
 
 			context "guess" do
-				it "valid guess code" do
-					valid_code = "1234"
-					expect(subject.guess(valid_code)).to eq(valid_code)
-				end
 
-				it "raise error for invalid guess code" do
+
+			it "raise error for invalid guess code" do
 					invalid_code = "12568"
 					expect {subject.guess(invalid_code)}.to raise_error
 				end
@@ -63,9 +60,35 @@ module Codebreaker
 				expect(subject.compare).to eq(["-"])
 			end
 
+			it "should mark with 2 '-'" do
+				subject.guess_code = "5145"
+				expect(subject.compare).to eq(["-","-"])
+			end
+
+
+			it "should mark with 3 '-'" do
+				subject.guess_code = "2146"
+				expect(subject.compare).to eq(["-","-","-"])
+			end
+
+			it "should mark with 4 '-'" do
+				subject.guess_code = "2143"
+				expect(subject.compare).to eq(["-","-","-","-"])
+			end
+
 			it "should mark with '+'" do
 				subject.guess_code = "5255"
 				expect(subject.compare).to eq(["+"])
+			end
+
+			it "should mark with 2 '+'" do
+				subject.guess_code = "1266"
+				expect(subject.compare).to eq(["+","+"])
+			end
+
+			it "should mark with 3 '+'" do
+				subject.guess_code = "1236"
+				expect(subject.compare).to eq(["+","+","+"])
 			end
 
 			it "should mark with both '+' and '-'" do
@@ -73,11 +96,28 @@ module Codebreaker
 				expect(subject.compare).to eq(["+","-"])
 			end
 
-			it "should mark with 4+" do
-				subject.guess_code = "1234"
-				expect(subject.compare).to eq(["+","+","+","+"])
+			it "should mark with both '+' and 2 '-'" do
+				subject.guess_code = "1523"
+				expect(subject.compare).to eq(["+","-","-"])
 			end
+
+			it "should mark with both '+' and 3 '-'" do
+				subject.guess_code = "1423"
+				expect(subject.compare).to eq(["+","-","-","-"])
+			end
+
+			it "should mark with 2 '+' and '-'" do
+				subject.guess_code = "1246"
+				expect(subject.compare).to eq(["+","+","-"])
+			end
+
+			it "should mark with 2 '+' and 2 '-'" do
+				subject.guess_code = "1243"
+				expect(subject.compare).to eq(["+","+","-","-"])
+			end
+
 		end
 	end
 end
+			
 
